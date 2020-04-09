@@ -59,7 +59,7 @@ int main()
 
     init(make);
 
-    cout<<coin_change(0,0);
+    cout<<coin_change(0,make);
 
 
 }
