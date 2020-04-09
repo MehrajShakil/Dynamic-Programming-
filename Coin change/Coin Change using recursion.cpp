@@ -15,7 +15,7 @@ ll coin_change(ll i, ll amount)
     if(i>=n) /// all coin have been taken
     {
         //cout<<"Final "<<i<<" "<<amount<<endl;
-        if(amount==make)
+        if(amount==0)
             return 1;
         else
             return 0;
@@ -27,10 +27,10 @@ ll coin_change(ll i, ll amount)
     }
     ll ret1= 0, ret2 = 0;
 
-    if(amount+coin[i]<=make)
+    if(amount-coin[i]>=0)
     {
         //cout<<" i'm start inner " <<i<<" "<<amount<<endl;
-        ret1 = coin_change(i,amount+coin[i]); /// try to take coin i
+        ret1 = coin_change(i,amount-coin[i]); /// try to take coin i
     }
     //cout<<" i'm start outter " <<i<<" "<<amount<<endl;
     ret2 = coin_change(i+1,amount);
