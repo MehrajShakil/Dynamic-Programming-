@@ -14,9 +14,9 @@ int main()
 
         for(ll i=0; i<5; i++)
         {
-            for(ll j=coins[i],k=0; j<=n; j++,k++)
+            for(ll j=1; j<=n; j++)
             {
-                noways[j]+=noways[k];
+               if(j>=coins[i])noways[j]+=noways[j-coins[i]];
             }
         }
         cout<<noways[n]<<'\n';
