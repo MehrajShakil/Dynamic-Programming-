@@ -81,7 +81,7 @@ ll n;
 
 ll dp[1000001][101][2];
 
-ll recur ( int pos , int cur , int digsum , int can ){
+ll recur ( int pos , int digsum , int can ){
 
    if ( pos == num.size() ) return digsum==0;
 
@@ -93,12 +93,12 @@ ll recur ( int pos , int cur , int digsum , int can ){
 
    if ( can ) {
      for ( int i = 0 ; i < 10 ; ++i ) {
-        ret = modAdd ( ret , recur ( pos + 1 , ((cur*10)+i)%n , (digsum + i)%n , can ) );
+        ret = modAdd ( ret , recur ( pos + 1 , (digsum + i)%n , can ) );
      }
    }
    else{
      for ( int i = 0 ; i <= (num[pos] - '0') ; ++i ) {
-        ret = modAdd ( ret , recur ( pos + 1 , ((cur*10)+i)%n , (digsum + i)%n , i<(num[pos] - '0') ) );
+        ret = modAdd ( ret , recur ( pos + 1 , (digsum + i)%n , i<(num[pos] - '0') ) );
      }
    }
 
@@ -115,7 +115,7 @@ void solve ( int tc ){
       }
    }
 
-   cout << modSub ( recur ( 0 , 0 , 0 , 0 ) , 1 ) << "\n";
+   cout << modSub ( recur ( 0 , 0 , 0 ) , 1 ) << "\n";
 
 
    return;
